@@ -1,20 +1,35 @@
-import java.util.Arrays;
 import java.util.Scanner;
-import java.util.SortedMap;
 
 public class UserMessage {
 
     public static void main(String[] args) {
 
-        listClientes();
-        enviarMensajesCliente();
+        Boolean iniciar = true;
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Iniciando sistema ..........!");
+        String otraOperacion = "";
+
+        while (iniciar){
+            System.out.println("Deseas iniciar alguna operación: Sí(y), No (x)");
+            otraOperacion = scan.next();
+            if(otraOperacion.equals("y")){
+                listClientes();
+                enviarMensajesCliente();
+            } else if (otraOperacion.equals("x")){
+                System.out.println("Good Bye!");
+                iniciar = false;
+                return;
+            }
+
+
+        }
+
     }
 
     private static void enviarMensajesCliente() {
         Scanner sc = new Scanner(System.in);
         int [] ids = new int[100];
         String clintesIDs = "";
-        String action = "";
         Boolean iniciar = true;
         int contador = 0;
 
@@ -33,31 +48,25 @@ public class UserMessage {
                 System.out.println("Ingrese nuevo ID de cliente (x: cancelar, y: continuar):");
                 clintesIDs = sc.next();
                 if(!clintesIDs.equals("y")) {
-                    System.out.println(clintesIDs);
                     contador += 1;
                     ids[contador] = Integer.parseInt(clintesIDs);
                 }
             }
         }
 
-        System.out.println(contador);
-        System.out.println(Arrays.toString(ids));
-
         System.out.println("Ingrese el mensaje:");
         Scanner input = new Scanner(System.in);
         String message = input.nextLine();
-        System.out.println(message);
-
-
+        
         int [] result = new int[contador + 1];
         System.arraycopy(ids, 0, result, 0, contador + 1);
-        System.out.println(Arrays.toString(result));
 
 
         for(int i = 0; i < result.length; i++){
             getClientes(result[i], message);
             System.out.println("----------------------------------------OK---->");
         }
+        System.out.println("###################### MENSAJES ENVIDOS #####################");
 
 
     }
