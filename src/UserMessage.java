@@ -47,7 +47,7 @@ public class UserMessage {
             } else {
                 System.out.println("Ingrese nuevo ID de cliente (x: cancelar, y: continuar):");
                 clintesIDs = sc.next();
-                if(!clintesIDs.equals("y")) {
+                if(!clintesIDs.equals("y") && !clintesIDs.equals("x")) {
                     contador += 1;
                     ids[contador] = Integer.parseInt(clintesIDs);
                 }
