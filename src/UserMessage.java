@@ -57,7 +57,7 @@ public class UserMessage {
         System.out.println("Ingrese el mensaje:");
         Scanner input = new Scanner(System.in);
         String message = input.nextLine();
-        
+
         int [] result = new int[contador + 1];
         System.arraycopy(ids, 0, result, 0, contador + 1);
 
